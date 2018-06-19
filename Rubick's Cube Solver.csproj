@@ -42,8 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cube.cs" />
+    <Compile Include="CubeGenerator.cs" />
+    <Compile Include="FacePositions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Side.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

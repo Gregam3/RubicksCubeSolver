@@ -7,43 +7,41 @@ using System.Threading.Tasks;
 namespace rubicks_cube_solver {
     class Cube {
         private readonly string SquareCharacter = "■";
-        private Dictionary<ConsoleColor, Side> Faces = new Dictionary<ConsoleColor, Side>();
+        private Dictionary<ConsoleColor, Side> Sides = new Dictionary<ConsoleColor, Side>();
         private readonly FacePosition[] positionMap = {
-           FacePosition.TopLeft, FacePosition.Top, FacePosition.TopRight,
+           FacePosition.TopLeftCorner, FacePosition.Top, FacePosition.TopRightCorner,
        FacePosition.CentreLeft, FacePosition.Centre, FacePosition.CentreRight,
-       FacePosition.BottomLeft, FacePosition.Bottom, FacePosition.BottomRight
+       FacePosition.BottomLeftCorner, FacePosition.Bottom, FacePosition.BottomRightCorner
         };
 
-        public Cube(Dictionary<ConsoleColor, Side> faces) {
-            Faces = faces;
+        public Cube(Dictionary<ConsoleColor, Side> sides) {
+            Sides = sides;
         }
 
         public void PrintCube() {
-            Dictionary<ConsoleColor, Side>.Enumerator facesEnumerator = Faces.GetEnumerator();
+            Dictionary<ConsoleColor, Side>.Enumerator facesEnumerator = Sides.GetEnumerator();
            
             while(facesEnumerator.MoveNext())
                 PrintSide(facesEnumerator.Current.Key, facesEnumerator.Current.Value);
         }
 
-        private void PrintSide(ConsoleColor color, Side side) {
-            foreach (FacePosition position in Enum.GetValues(typeof(FacePosition))) {
-
-                for (int i = 0; i < 9; i++) {
-                    if (i + 1 % 3 == 0)
-                        Console.WriteLine();
-                    if (i == 4)
-                        PrintInColor(SquareCharacter, color);
-                    PrintInColor(SquareCharacter, side.GetFaces()[positionMap[i]]);
-                }
-
-
+        private void PrintSide(ConsoleColor color, Side side) { 
+            for (int i = 0; i < 9; i++) {
+                if (i % 3 == 0)
+                    Console.WriteLine();
+                if (i == 4)
+                    PrintInColor(color);
+                else
+                    PrintInColor(side.GetFaces()[positionMap[i]]);
             }
+
+            Console.WriteLine();
+
         }
 
-        private void PrintInColor(string textToPrint, ConsoleColor consoleColor) {
+        private void PrintInColor(ConsoleColor consoleColor) {
             Console.ForegroundColor = consoleColor;
-            Console.Write(textToPrint);
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(SquareCharacter);
         }
     }
 }

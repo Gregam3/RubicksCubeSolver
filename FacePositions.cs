@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace rubicks_cube_solver {
     enum FacePosition {
-       TopLeft, Top, TopRight,
+       TopLeftCorner, Top, TopRightCorner,
        CentreLeft, Centre, CentreRight,
-       BottomLeft, Bottom, BottomRight 
+       BottomLeftCorner, Bottom, BottomRightCorner 
     }
 }

@@ -1,0 +1,7 @@
+C:\Users\i7676925\source\repos\Rubick's Cube Solver\Rubick's Cube Solver\bin\Debug\Rubick's Cube Solver.exe.config
+C:\Users\i7676925\source\repos\Rubick's Cube Solver\Rubick's Cube Solver\bin\Debug\Rubick's Cube Solver.exe
+C:\Users\i7676925\source\repos\Rubick's Cube Solver\Rubick's Cube Solver\bin\Debug\Rubick's Cube Solver.pdb
+C:\Users\i7676925\source\repos\Rubick's Cube Solver\Rubick's Cube Solver\obj\Debug\Rubick's Cube Solver.csprojAssemblyReference.cache
+C:\Users\i7676925\source\repos\Rubick's Cube Solver\Rubick's Cube Solver\obj\Debug\Rubick's Cube Solver.csproj.CoreCompileInputs.cache
+C:\Users\i7676925\source\repos\Rubick's Cube Solver\Rubick's Cube Solver\obj\Debug\Rubick's Cube Solver.exe
+C:\Users\i7676925\source\repos\Rubick's Cube Solver\Rubick's Cube Solver\obj\Debug\Rubick's Cube Solver.pdb
