@@ -12,7 +12,20 @@ namespace rubicks_cube_solver {
             Cube cube = CubeGenerator.GenerateCube();
 
             cube.PrintCube();
+            CubeManipulator cubeManipulator = new CubeManipulator();
+
+
+            Console.WriteLine("MOVED RIGHT");
+            Console.WriteLine();
+
+            cubeManipulator.Right(cube).PrintCube();
+
             Console.Read();
+        }
+
+        //First directive create white cross with yellow centre
+        static void SurroundYellowCentreWithWhiteSides(Cube cube) {
+
         }
     }
 }

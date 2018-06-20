@@ -7,32 +7,30 @@ using System.Threading.Tasks;
 namespace rubicks_cube_solver {
     class Cube {
         private readonly string SquareCharacter = "■";
-        private Dictionary<ConsoleColor, Side> Sides = new Dictionary<ConsoleColor, Side>();
+        private Dictionary<SidePosition, Side> Sides = new Dictionary<SidePosition, Side>();
         private readonly FacePosition[] positionMap = {
            FacePosition.TopLeftCorner, FacePosition.Top, FacePosition.TopRightCorner,
        FacePosition.CentreLeft, FacePosition.Centre, FacePosition.CentreRight,
        FacePosition.BottomLeftCorner, FacePosition.Bottom, FacePosition.BottomRightCorner
         };
 
-        public Cube(Dictionary<ConsoleColor, Side> sides) {
+        public Cube(Dictionary<SidePosition, Side> sides) {
             Sides = sides;
         }
 
         public void PrintCube() {
-            Dictionary<ConsoleColor, Side>.Enumerator facesEnumerator = Sides.GetEnumerator();
+            Dictionary<SidePosition, Side>.Enumerator facesEnumerator = Sides.GetEnumerator();
            
             while(facesEnumerator.MoveNext())
                 PrintSide(facesEnumerator.Current.Key, facesEnumerator.Current.Value);
         }
 
-        private void PrintSide(ConsoleColor color, Side side) { 
+        private void PrintSide(SidePosition sidePosition, Side side) { 
             for (int i = 0; i < 9; i++) {
                 if (i % 3 == 0)
                     Console.WriteLine();
-                if (i == 4)
-                    PrintInColor(color);
-                else
-                    PrintInColor(side.GetFaces()[positionMap[i]]);
+
+                PrintInColor(side.GetFaces()[positionMap[i]]);
             }
 
             Console.WriteLine();
@@ -42,6 +40,14 @@ namespace rubicks_cube_solver {
         private void PrintInColor(ConsoleColor consoleColor) {
             Console.ForegroundColor = consoleColor;
             Console.Write(SquareCharacter);
+        }
+
+        public Dictionary<SidePosition, Side> GetSides() {
+            return Sides;
+        }
+
+        public void SetSides(Dictionary<SidePosition, Side> sides) {
+            Sides = sides;
         }
     }
 }

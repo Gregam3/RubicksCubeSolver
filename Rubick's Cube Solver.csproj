@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Cube.cs" />
     <Compile Include="CubeGenerator.cs" />
+    <Compile Include="CubeManipulator.cs" />
     <Compile Include="FacePositions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

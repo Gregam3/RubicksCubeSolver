@@ -12,24 +12,30 @@ namespace rubicks_cube_solver {
         private static readonly Random Random = new Random();
 
         public static Cube GenerateCube() {
-            Dictionary<ConsoleColor, Side> sides = new Dictionary<ConsoleColor, Side>();
+            Dictionary<SidePosition, Side> sides = new Dictionary<SidePosition, Side>();
 
-            foreach (ConsoleColor color in AvailableColors)
-                sides.Add(color, GenerateSide());
+            //May iterate eventually, position needs to correspond to color.
+            sides.Add(SidePosition.Top, GenerateSide(ConsoleColor.Yellow));
+            sides.Add(SidePosition.Front, GenerateSide(ConsoleColor.DarkRed));
+            sides.Add(SidePosition.Right, GenerateSide(ConsoleColor.Green));
+            sides.Add(SidePosition.Back, GenerateSide(ConsoleColor.Red));
+            sides.Add(SidePosition.Left, GenerateSide(ConsoleColor.Blue));
+            sides.Add(SidePosition.Bottom, GenerateSide(ConsoleColor.White));
 
             return new Cube(sides);
         }
 
-        private static Side GenerateSide() {
+        private static Side GenerateSide(ConsoleColor color) {
             Dictionary<FacePosition, ConsoleColor> faces = new Dictionary<FacePosition, ConsoleColor>();
 
             foreach (FacePosition position in Enum.GetValues(typeof(FacePosition))) {
                 if (position.ToString().Contains("Corner"))
                     faces.Add(position, GenerateColor("corner"));
-                else if(position != FacePosition.Centre)
+                else if (position != FacePosition.Centre)
                     faces.Add(position, GenerateColor("side"));
+                else
+                    faces.Add(FacePosition.Centre, color);
             }
-
 
             return new Side(faces);
         }
@@ -39,8 +45,6 @@ namespace rubicks_cube_solver {
 
             //Black is used as a color will be sent when something goes wrong, equivalent of returning -1 for something like age.
             ConsoleColor color = ConsoleColor.Black;
-
-
 
             while (!colorValid) {
                 //5 as there will only ever be 6 colors (starting at 0)
@@ -58,7 +62,6 @@ namespace rubicks_cube_solver {
                     }
                 }
             }
-
 
             return color;
         }
