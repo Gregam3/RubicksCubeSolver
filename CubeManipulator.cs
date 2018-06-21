@@ -38,25 +38,24 @@ namespace rubicks_cube_solver {
         public Cube Right(Cube cube) {
             Dictionary<SidePosition, Side> newSides = new Dictionary<SidePosition, Side>();
 
-            Side tempSide = null;
+            Side tempSide;
 
             for (int i = 0;  i < RightSideOrder.Count; i++) {
-                tempSide = cube.GetSides()[RightSideOrder[i]];
+                tempSide = new Dictionary<SidePosition, Side>(cube.GetSides())[RightSideOrder[i]];
 
                 for (int j = 0; j < RightFaceOrder.Count; j++) {
-                    tempSide.GetFaces()[RightFaceOrder[j]] = 
+                    tempSide.GetFaces()[RightFaceOrder[j]] =
                         cube.GetSides()[RightSideOrder[GetAntecedantSideIndex(i)]]
                         .GetFaces()[RightFaceOrder[j]];
-
                 }
-
-                Dictionary<SidePosition, Side>.Enumerator changedSideEnumerator = newSides.GetEnumerator();
-
-                while (changedSideEnumerator.MoveNext())
-                    cube.GetSides()[changedSideEnumerator.Current.Key] =  changedSideEnumerator.Current.Value;
 
                 newSides.Add(RightSideOrder[i], tempSide);
             }
+
+            Dictionary<SidePosition, Side>.Enumerator changedSideEnumerator = newSides.GetEnumerator();
+
+            while (changedSideEnumerator.MoveNext())
+                cube.GetSides()[changedSideEnumerator.Current.Key] = changedSideEnumerator.Current.Value;
 
             return cube;
         }
